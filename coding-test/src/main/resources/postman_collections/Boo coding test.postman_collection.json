@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "ca27813b-5da2-434e-8e1c-d6c1ab5f3f36",
+		"name": "Boo coding test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10518516"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Sergio\",\r\n    \"description\": \"Description for Sergio\",\r\n    \"mbti\": \"ESTP\",\r\n    \"enneagram\": \"8w9\",\r\n    \"variant\": \"sp/so\",\r\n    \"tritype\": 725,\r\n    \"socionics\": \"SEE\",\r\n    \"sloan\": \"RCOEN\",\r\n    \"psyche\": \"FEVL\",\r\n    \"image\": \"https://soulverse.boo.world/images/1.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/{{idUser}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"{{idUser}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Get comments By Id User Destination",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/{{idUserDestination}}/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"{{idUserDestination}}",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get comments By Id User Destination sorting filtering",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/{{idUserDestination}}/comments/sorting-filtering?sort=best",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"{{idUserDestination}}",
+								"comments",
+								"sorting-filtering"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "best"
+								},
+								{
+									"key": "mbti",
+									"value": "INFJ",
+									"disabled": true
+								},
+								{
+									"key": "enneagram",
+									"value": "9w1",
+									"disabled": true
+								},
+								{
+									"key": "zodiac",
+									"value": "taurus",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUserCreator\":\"{{idUserCreator}}\",\r\n    \"idUserDestination\":\"{{idUserDestination}}\",\r\n    \"description\":\"This is the description for a comment made by {{idUserCreator}} to {{idUserDestination}}\",\r\n    \"mbti\":\"INFJ\",\r\n    \"enneagram\":\"9w8\",\r\n    \"zodiac\":\"cancer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/{{idUserCreator}}/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"{{idUserCreator}}",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Vote",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUserCreator\": \"{{idUserCreator}}\",\r\n    \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/comments/{{idComment}}/like-dislike",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"comments",
+								"{{idComment}}",
+								"like-dislike"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "idUser",
+			"value": "65b6cd2192923f6f873457cb1"
+		}
+	]
+}
